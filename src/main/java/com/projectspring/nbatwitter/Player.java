@@ -36,4 +36,8 @@ public class Player {
         return this.twitter;
     }
 
+    @Override
+    public String toString() {
+        return "Player{" + "ID: " + id + ", First Name: " + firstName + ", Last Name: " + lastName + ", Twitter: " + twitter + " }";
+    }
 }
