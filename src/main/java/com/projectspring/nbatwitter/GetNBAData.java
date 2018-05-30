@@ -11,7 +11,8 @@ import java.util.List;
 import org.json.*;
 
 public class GetNBAData {
-    public static void main(String[] args) {
+    public List<Player> getActivePlayerData() {
+        List<Player> listAllPlayers = new ArrayList<Player>();
         try {
             URL url = new URL("https://api.mysportsfeeds.com/v1.2/pull/nba/2016-2017-regular/active_players.json");
             String encoding = Base64.getEncoder().encodeToString("surilshah:Suril5594*".getBytes("utf-8"));
@@ -23,9 +24,7 @@ public class GetNBAData {
             InputStream content = connection.getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(content));
             String line;
-            List<Player> listAllPlayers = new ArrayList<Player>();
             while ((line = in.readLine()) != null) {
-                System.out.println(line);
                 JSONObject obj = new JSONObject(line);
                 JSONArray playerlist = obj.getJSONObject("activeplayers").getJSONArray("playerentry");
                 for(int i = 0; i < playerlist.length(); i++) {
@@ -37,11 +36,9 @@ public class GetNBAData {
                     listAllPlayers.add(player);
                 }
             }
-            for (Player obj : listAllPlayers) {
-                System.out.println(obj.toString());
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return listAllPlayers;
     }
 }

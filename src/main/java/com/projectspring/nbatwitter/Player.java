@@ -38,6 +38,6 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player{" + "ID: " + id + ", First Name: " + firstName + ", Last Name: " + lastName + ", Twitter: " + twitter + " }";
+        return "Player{" + "ID: " + this.id + ", First Name: " + this.firstName + ", Last Name: " + this.lastName + ", Twitter: " + this.twitter + " }";
     }
 }
